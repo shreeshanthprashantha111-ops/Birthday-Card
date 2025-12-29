@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Happy Birthday 💕</title>
+
+  <!-- Optional nicer cursive font -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+      background: linear-gradient(135deg, #ffb6c1, #ffe4e1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-family: 'Pacifico', cursive;
+      color: #ffffff;
+    }
+
+    .content {
+      z-index: 2;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 4em; /* BIG text */
+      margin-bottom: 20px;
+      text-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    p {
+      font-size: 2em; /* doubled size */
+      line-height: 1.4;
+      text-shadow: 0 3px 8px rgba(0,0,0,0.2);
+    }
+
+    button {
+      margin-top: 25px;
+      padding: 14px 30px;
+      border: none;
+      border-radius: 30px;
+      background: #ff69b4;
+      color: white;
+      font-size: 1.4em;
+      cursor: pointer;
+      font-family: inherit;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+    }
+
+    .confetti1 {
+      position: absolute;
+      top: -60px;
+      pointer-events: none;
+      animation-name: fall;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+      opacity: 0.9;
+    }
+
+    @keyframes fall {
+      from {
+        transform: translateY(0) rotate(0deg);
+      }
+      to {
+        transform: translateY(110vh) rotate(360deg);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 🎵 Music -->
+  <audio id="music" loop>
+    <source src="TV girl - lovers rock instrumental.mp3" type="audio/mpeg" />
+  </audio>
+
+  <div class="content">
+    <h1>HAPPY BIRTHDAY ADITI!! 🎉</h1>
+    <p>
+      You make the day for so many people 💕<br />
+      I’m really grateful for you.
+    </p>
+
+    <button onclick="playAndCelebrate()">▶ Play Music & Celebrate</button>
+  </div>
+
+  <script>
+    function playMusic() {
+      document.getElementById("music").play();
+    }
+
+    function startConfetti() {
+      for (let i = 0; i < 30; i++) {
+        const confetti = document.createElement("img");
+        confetti.src = "confetti1.png";
+        confetti.className = "confetti1";
+
+        confetti.style.left = Math.random() * 100 + "vw";
+        confetti.style.top = (-Math.random() * 100) + "px";
+
+        confetti.style.width = (20 + Math.random() * 25) + "px";
+        confetti.style.height = "auto";
+
+        confetti.style.animationDuration = (6 + Math.random() * 6) + "s";
+        confetti.style.animationDelay = Math.random() * 5 + "s";
+
+        document.body.appendChild(confetti); // <-- fixed here!
+      }
+    }
+
+    function playAndCelebrate() {
+      playMusic();
+      startConfetti();
+    }
+  </script>
+</body>
+</html>
+
